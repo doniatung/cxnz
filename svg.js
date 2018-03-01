@@ -53,18 +53,26 @@ var clicked = function(e){
 };
 
 var cleanse = function(e){
-  var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  rect.setAttribute("cx", "0");
-  rect.setAttribute("cy", "0");
-  rect.setAttribute("fill", "white");
-  rect.setAttribute("width", "500");
-  rect.setAttribute("height", "500")
+  var rectangle = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  rectangle.setAttribute("x", "0");
+  rectangle.setAttribute("y", "0");
+  rectangle.setAttribute("fill", "pink");
+  rectangle.setAttribute("width", "500");
+  rectangle.setAttribute("height", "500");
   counter = 0;
-  svg.appendChild(rect);
+  svg.appendChild(rectangle);
 }
 
+var clear = function(e){
+  console.log("hi");
+    while (svg.firstChild) {
+        svg.removeChild(svg.firstChild);
+    }
+    counter = 0;
+};
 
-var clear = document.getElementById("clear");
-clear.addEventListener("clear", cleanse);
+
+var button = document.getElementById("clear");
+button.addEventListener("click", cleanse);
 
 svg.addEventListener("click", clicked);
